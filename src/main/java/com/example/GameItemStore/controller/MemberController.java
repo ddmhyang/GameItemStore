@@ -25,4 +25,8 @@ public class MemberController {
     public Member login(@RequestBody Member member) {
         return memberService.login(member.getLoginId(), member.getPassword());
     }
+    @PostMapping("/{id}/withdraw")
+    public Member withdraw(@PathVariable Long id, @RequestParam int amount) {
+        return memberService.withdraw(id, amount);
+    }
 }

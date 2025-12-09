@@ -25,4 +25,16 @@ public class MemberService {
                 .filter(m -> m.getPassword().equals(password))
                 .orElse(null);
     }
+    public Member withdraw(Long memberId, int amount) {
+        Member member = memberRepository.findById(memberId).orElse(null);
+        if (member != null) {
+            // 돈이 부족하면 에러!
+            if (member.getMileage() < amount) {
+                throw new IllegalStateException("잔액이 부족합니다!");
+            }
+            member.setMileage(member.getMileage() - amount); // 차감
+            memberRepository.save(member);
+        }
+        return member; // 줄어든 잔액 정보를 다시 돌려줌
+    }
 }

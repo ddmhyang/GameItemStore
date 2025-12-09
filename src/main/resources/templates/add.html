@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게임 아이템 상점</title>
+</head>
+<body>
+<h1>⚔️ 전설의 아이템 등록하기</h1>
+
+<form action="/add" method="post">
+    <div>
+        <label>아이템 이름:</label>
+        <input type="text" name="itemName" placeholder="예: 엑스칼리버">
+    </div>
+    <div>
+        <label>가격:</label>
+        <input type="number" name="price" placeholder="예: 1000">
+    </div>
+    <div>
+        <label>설명:</label>
+        <textarea name="description" placeholder="아이템 설명을 적으세요"></textarea>
+    </div>
+    <button type="submit">아이템 저장하기</button>
+</form>
+
+<br>
+<a href="/list">목록 보러 가기</a>
+</body>
+</html>

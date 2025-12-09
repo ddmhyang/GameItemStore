@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>아이템 목록</title>
+    <style>
+        /* 표(Table)를 예쁘게 꾸미는 스타일 */
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+<h1>📜 현재 판매 중인 아이템 목록</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>가격</th>
+        <th>설명</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}">1</td>
+        <td th:text="${item.itemName}">테스트검</td>
+        <td th:text="${item.price}">100</td>
+        <td th:text="${item.description}">설명</td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/add">새 아이템 등록하러 가기</a>
+</body>
+</html>

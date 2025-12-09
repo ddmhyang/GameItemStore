@@ -14,7 +14,8 @@ public class MemberService {
     // 회원가입
     public void join(Member member) {
         member.setRole("USER"); // 기본 권한
-        member.setMileage(0);   // 초기 마일리지
+        // [수정] 가입 축하금 100원 지급!
+        member.setMileage(100);
         memberRepository.save(member);
     }
 

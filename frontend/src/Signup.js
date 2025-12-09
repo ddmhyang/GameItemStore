@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css'; // 디자인 같이 쓰기
+import './App.css';
 
 function Signup({ onSwitch }) {
   const [form, setForm] = useState({ loginId: '', password: '', nickname: '' });
@@ -16,12 +16,12 @@ function Signup({ onSwitch }) {
 
     axios.post('http://localhost:8080/api/members/join', form)
       .then(response => {
-        alert(response.data); // "회원가입 성공!" 메시지 뜸
-        onSwitch(); // 로그인 화면으로 전환
+        alert(response.data); // 1. "회원가입 성공!" 메시지 띄우기
+        onSwitch();           // 2. [핵심] 로그인 화면으로 강제 이동 시키기
       })
       .catch(error => {
         console.error(error);
-        alert("회원가입 실패! (아이디 중복 등)");
+        alert("회원가입 실패! (이미 있는 아이디 등)");
       });
   };
 
@@ -31,7 +31,9 @@ function Signup({ onSwitch }) {
       <input name="loginId" placeholder="아이디" onChange={handleChange} />
       <input name="password" type="password" placeholder="비밀번호" onChange={handleChange} />
       <input name="nickname" placeholder="닉네임" onChange={handleChange} />
+
       <button onClick={handleSubmit}>가입하기</button>
+
       <p style={{marginTop: '10px', fontSize: '0.9rem', color: '#ccc'}}>
         이미 계정이 있나요? <span onClick={onSwitch} style={{color: '#4cc9f0', cursor: 'pointer', fontWeight: 'bold'}}>로그인하러 가기</span>
       </p>

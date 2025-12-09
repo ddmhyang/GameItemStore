@@ -1,4 +1,4 @@
-package com.example.GameItemStore.entiy;
+package com.example.GameItemStore.entity;
 
 import jakarta.persistence.*; // JPA 관련 도구들을 다 가져옴
 import lombok.Data; // 게터, 세터 자동 생성 도구

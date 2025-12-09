@@ -1,6 +1,6 @@
 package com.example.GameItemStore.controller;
 
-import com.example.GameItemStore.entiy.GameItem; // 회원님 패키지명(entiy) 유지
+import com.example.GameItemStore.entity.GameItem; // 회원님 패키지명(entiy) 유지
 import com.example.GameItemStore.service.GameItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

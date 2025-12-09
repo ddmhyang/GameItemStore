@@ -1,6 +1,6 @@
 package com.example.GameItemStore.service;
 
-import com.example.GameItemStore.entiy.GameItem;
+import com.example.GameItemStore.entity.GameItem;
 import com.example.GameItemStore.repository.GameItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

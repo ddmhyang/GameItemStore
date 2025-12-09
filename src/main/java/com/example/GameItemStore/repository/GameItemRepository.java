@@ -1,6 +1,6 @@
 package com.example.GameItemStore.repository;
 
-import com.example.GameItemStore.entiy.GameItem;
+import com.example.GameItemStore.entity.GameItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

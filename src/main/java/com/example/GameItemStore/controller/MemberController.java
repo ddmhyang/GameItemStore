@@ -41,4 +41,9 @@ public class MemberController {
         memberRepository.deleteById(id);
         return "회원 삭제 완료";
     }
+    @PutMapping("/{id}/mileage")
+    public String updateMileage(@PathVariable Long id, @RequestParam int amount) {
+        memberService.updateMileage(id, amount);
+        return "마일리지 수정 완료";
+    }
 }

@@ -73,4 +73,13 @@ public class GameItemService {
     public List<GameItem> searchItems(String keyword) {
         return gameItemRepository.findByItemNameContaining(keyword);
     }
+    public void updateItem(Long id, String name, int price, String description) {
+        GameItem item = gameItemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("아이템 없음"));
+        if (item.isSold()) throw new IllegalStateException("이미 팔린 아이템은 수정 불가");
+
+        item.setItemName(name);
+        item.setPrice(price);
+        item.setDescription(description);
+        gameItemRepository.save(item);
+    }
 }

@@ -45,4 +45,9 @@ public class MemberService {
         }
         return member;
     }
+    public void updateMileage(Long id, int newMileage) {
+        Member member = memberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("회원 없음"));
+        member.setMileage(newMileage);
+        memberRepository.save(member);
+    }
 }

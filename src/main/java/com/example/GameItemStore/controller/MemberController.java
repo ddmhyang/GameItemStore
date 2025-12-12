@@ -29,4 +29,20 @@ public class MemberController {
     public Member withdraw(@PathVariable Long id, @RequestParam int amount) {
         return memberService.withdraw(id, amount);
     }
+
+    @Autowired
+    private com.example.GameItemStore.repository.MemberRepository memberRepository;
+
+    // [관리자용] 모든 회원 목록 가져오기
+    @GetMapping
+    public java.util.List<Member> getAllMembers() {
+        return memberRepository.findAll();
+    }
+
+    // [관리자용] 회원 강제 탈퇴
+    @DeleteMapping("/{id}")
+    public String deleteMember(@PathVariable Long id) {
+        memberRepository.deleteById(id);
+        return "회원 삭제 완료";
+    }
 }

@@ -23,4 +23,7 @@ public class Member {
 
     // [기획서 반영] 권한: "USER"(일반), "ADMIN"(관리자)
     private String role;
+
+    @Transient
+    private String token;
 }

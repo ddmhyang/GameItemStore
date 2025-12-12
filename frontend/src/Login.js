@@ -9,11 +9,20 @@ function Login({ onLogin, onSwitch }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+// ... import 문 생략 ...
+
   const handleSubmit = () => {
     axios.post('http://localhost:8080/api/members/login', form)
       .then(response => {
         if (response.data) {
           alert(response.data.nickname + "님 환영합니다! 🎉");
+
+          // [핵심] 받은 토큰을 브라우저에 저장! (교수님이 원하던 것)
+          if (response.data.token) {
+            localStorage.setItem("token", response.data.token);
+            console.log("발급된 토큰:", response.data.token); // 개발자 도구 확인용
+          }
+
           onLogin(response.data);
         } else {
           alert("아이디 또는 비밀번호가 틀렸습니다.");
@@ -21,6 +30,8 @@ function Login({ onLogin, onSwitch }) {
       })
       .catch(() => alert("로그인 오류 발생!"));
   };
+
+// ... 나머지 UI 코드는 그대로 ...
 
   // [추가] 엔터키 감지 함수
   const handleKeyDown = (e) => {

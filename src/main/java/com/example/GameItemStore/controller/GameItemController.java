@@ -47,4 +47,14 @@ public class GameItemController {
     public List<GameItem> getMyBuyingItems(@RequestParam Long memberId) {
         return gameItemService.getMyBuyingItems(memberId);
     }
+
+    @Autowired
+    private com.example.GameItemStore.repository.GameItemRepository gameItemRepository;
+
+    // [관리자용] 아이템 강제 삭제
+    @DeleteMapping("/api/items/{id}")
+    public String deleteItem(@PathVariable Long id) {
+        gameItemRepository.deleteById(id);
+        return "아이템 삭제 완료";
+    }
 }

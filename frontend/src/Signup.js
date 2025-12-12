@@ -1,28 +1,21 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { joinApi } from './api';
 import './App.css';
 
 function Signup({ onSwitch }) {
   const [form, setForm] = useState({ loginId: '', password: '', nickname: '' });
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = () => {
-    if (!form.loginId || !form.password || !form.nickname) {
-      return alert("모든 칸을 채워주세요!");
-    }
+    if (!form.loginId || !form.password || !form.nickname) return alert("빈칸을 채워주세요.");
 
-    axios.post('http://localhost:8080/api/members/join', form)
+    joinApi(form)
       .then(response => {
-        alert(response.data); // 1. "회원가입 성공!" 메시지 띄우기
-        onSwitch();           // 2. [핵심] 로그인 화면으로 강제 이동 시키기
+        alert(response.data);
+        onSwitch();
       })
-      .catch(error => {
-        console.error(error);
-        alert("회원가입 실패! (이미 있는 아이디 등)");
-      });
+      .catch(() => alert("회원가입 실패 (ID 중복 등)"));
   };
 
   return (
@@ -31,9 +24,7 @@ function Signup({ onSwitch }) {
       <input name="loginId" placeholder="아이디" onChange={handleChange} />
       <input name="password" type="password" placeholder="비밀번호" onChange={handleChange} />
       <input name="nickname" placeholder="닉네임" onChange={handleChange} />
-
       <button onClick={handleSubmit}>가입하기</button>
-
       <p style={{marginTop: '10px', fontSize: '0.9rem', color: '#ccc'}}>
         이미 계정이 있나요? <span onClick={onSwitch} style={{color: '#4cc9f0', cursor: 'pointer', fontWeight: 'bold'}}>로그인하러 가기</span>
       </p>

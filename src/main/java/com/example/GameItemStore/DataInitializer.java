@@ -14,16 +14,14 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // 1. "admin"이라는 아이디가 이미 있는지 확인
         if (memberRepository.findByLoginId("admin").isEmpty()) {
 
-            // 2. 없으면 관리자 계정 생성
             Member admin = new Member();
             admin.setLoginId("admin");
             admin.setPassword("1234");
             admin.setNickname("총관리자");
-            admin.setRole("ADMIN");     // 핵심: 관리자 권한
-            admin.setMileage(1000000);  // 테스트 편하게 돈도 두둑이 줌 (100만)
+            admin.setRole("ADMIN");
+            admin.setMileage(1000000);
 
             memberRepository.save(admin);
 

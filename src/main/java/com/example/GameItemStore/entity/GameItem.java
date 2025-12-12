@@ -19,7 +19,6 @@ public class GameItem {
     @JoinColumn(name = "seller_id")
     private Member seller;
 
-    // [추가] 구매자 정보 (누가 샀는지 기록)
     @ManyToOne
     @JoinColumn(name = "buyer_id")
     private Member buyer;

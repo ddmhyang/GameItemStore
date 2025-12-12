@@ -9,19 +9,17 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 고유 번호
+    private Long id;
 
-    @Column(unique = true) // 아이디 중복 방지
-    private String loginId; // 로그인 아이디 (예: user1)
+    @Column(unique = true)
+    private String loginId;
 
-    private String password; // 비밀번호
+    private String password;
 
-    private String nickname; // 닉네임 (예: 겜돌이)
+    private String nickname;
 
-    // [기획서 반영] 마일리지: 0원부터 시작
     private int mileage = 0;
 
-    // [기획서 반영] 권한: "USER"(일반), "ADMIN"(관리자)
     private String role;
 
     @Transient
